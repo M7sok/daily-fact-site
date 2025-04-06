@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Fun Fact</title>
+  <meta name="description" content="Get a new random fact every time you visit. Updated daily.">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Google AdSense Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4604725309600023"
+     crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-6">
+  <div class="max-w-xl w-full bg-white rounded-2xl shadow-lg p-6 text-center">
+    <h1 class="text-3xl font-bold mb-4 text-gray-800">🤯 Random Fact of the Moment</h1>
+    <p id="fact" class="text-lg text-gray-700 animate-pulse">Loading a mind-blowing fact...</p>
+
+    <div class="mt-6">
+      <!-- Google AdSense Inline Ad -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4604725309600023"
+           data-ad-slot="5051992023"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </div>
+
+  <!-- Optional: Vertical Footer Ad -->
+  <div class="mt-6">
+    <!-- Add your Vertical ad script/code block here if you want later -->
+  </div>
+
+  <script>
+    fetch("https://uselessfacts.jsph.pl/random.json?language=en")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("fact").textContent = data.text;
+      })
+      .catch(() => {
+        document.getElementById("fact").textContent = "Oops! Couldn't load a fact right now.";
+      });
+  </script>
+</body>
+</html>
